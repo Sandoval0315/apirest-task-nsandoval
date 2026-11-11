@@ -29,7 +29,7 @@ public class TaskController {
 
     // obtener tarea por id
     @GetMapping("/{id}")
-    public ResponseEntity<Task> getTaskById(@PathVariable Long id, @Valid @RequestBody Task task) {
+    public ResponseEntity<Task> getTaskById(@PathVariable Long id) {
         return ResponseEntity.ok(taskService.getTaskById(id));
     }
 
@@ -47,7 +47,7 @@ public class TaskController {
     @PutMapping("/{id}")
     public ResponseEntity<Task> updateTask(
             @PathVariable Long id,
-            @RequestBody Task task) {
+            @RequestBody @Valid Task task) {
 
         return ResponseEntity.ok(taskService.updateTask(id, task));
     }

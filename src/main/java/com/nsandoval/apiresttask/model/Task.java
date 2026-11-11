@@ -17,12 +17,13 @@ public class Task {
 
     private String description;
 
+    @Column(nullable = false)
     private Boolean isCompleted = false;
 
     public Task() {
     }
 
-    // Getters y Setters
+    // getters y setters
 
     public Long getId() {
         return id;

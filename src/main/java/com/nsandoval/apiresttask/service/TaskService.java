@@ -4,6 +4,7 @@ package com.nsandoval.apiresttask.service;
 import org.springframework.stereotype.Service;
 import com.nsandoval.apiresttask.model.Task;
 import com.nsandoval.apiresttask.repository.TaskRepository;
+import com.nsandoval.apiresttask.validation.TareaNoEncontradaException;
 
 import java.util.List;
 
@@ -16,34 +17,37 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
-    // Obtener todas las tareas
+    // obtener las tareas
     public List<Task> getAllTasks() {
         return taskRepository.findAll();
     }
 
-    // Obtener una tarea por ID
+    // obtener tarea por id
     public Task getTaskById(Long id) {
         return taskRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Tarea no encontrada: " + id));
+                .orElseThrow(() -> new TareaNoEncontradaException(id));
     }
 
-    // Crear una tarea
+    // crear una tarea nueva
     public Task createTask(Task task) {
+        if (task.getIsCompleted() == null) {
+            task.setIsCompleted(false);
+        }
         return taskRepository.save(task);
     }
 
-    // Actualizar una tarea
+    // actualizar una tarea
     public Task updateTask(Long id, Task updatedTask) {
         Task existingTask = getTaskById(id);
 
         existingTask.setTitle(updatedTask.getTitle());
         existingTask.setDescription(updatedTask.getDescription());
-        existingTask.setIsCompleted(updatedTask.getIsCompleted());
+        existingTask.setIsCompleted(Boolean.TRUE.equals(updatedTask.getIsCompleted()));
 
         return taskRepository.save(existingTask);
     }
 
-    // Eliminar una tarea
+    // eliminar una tarea
     public void deleteTask(Long id) {
         Task task = getTaskById(id);
         taskRepository.delete(task);
