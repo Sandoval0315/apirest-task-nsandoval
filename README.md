@@ -46,18 +46,25 @@ El flujo de GitHub Actions revisa que el proyecto compile correctamente cuando s
 | PUT | `/api/tasks/{id}` | Actualiza una tarea existente. |
 | DELETE | `/api/tasks/{id}` | Elimina una tarea. |
 
-### Crear una tarea desde consola
+### Crear una tarea desde consola o Postman
 macOS:
 ```bash
 curl -X POST http://localhost:8080/api/tasks \
   -H 'Content-Type: application/json' \
-  -d '{"title":"Preparar documentación","description":"Documentar endpoints","isCompleted":false}'
+  -d '{"title":"Titulo de tarea","description":"Description de tarea","isCompleted":false}'
 ```
 Windows:
 ```bash
 curl.exe -X POST http://localhost:8080/api/tasks `
   -H "Content-Type: application/json" `
-  -d '{\"title\":\"Preparar documentación\",\"description\":\"Documentar endpoints\",\"isCompleted\":false}'
+  -d '{\"title\":\"Titulo de tarea\",\"description\":\"Description de tarea\",\"isCompleted\":false}'
+```
+Body-JSON:
+```bash{
+  "title": "Titulo de tarea",
+  "description": "Description de tarea",
+  "isCompleted": false
+}
 ```
 El campo `title` es obligatorio y no puede estar vacío. Si `isCompleted` no se envía, se guarda como `false`.
 
