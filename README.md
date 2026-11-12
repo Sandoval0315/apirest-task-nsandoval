@@ -60,8 +60,9 @@ curl.exe -X POST http://localhost:8080/api/tasks `
   -d '{\"title\":\"Titulo de tarea\",\"description\":\"Description de tarea\",\"isCompleted\":false}'
 ```
 Body-JSON:
-```bash{
-  "title": "Titulo de tarea",
+```bash
+{
+"title": "Titulo de tarea",
   "description": "Description de tarea",
   "isCompleted": false
 }
