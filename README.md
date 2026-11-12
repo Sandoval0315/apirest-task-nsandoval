@@ -6,17 +6,17 @@ API REST para administrar tareas. Permite crear, consultar, actualizar y elimina
 
 - Java 17
 - Spring Boot: se usó porque facilita crear APIs REST, validar datos y conectar una base de datos.
-- Spring Data JPA con H2: H2 es una base de datos liviana que corre en memoria. No se necesita instalar ni configurar un servidor de base de datos.
+- Spring Data JPA con H2: H2 es una base de datos liviana que corre en memoria sin necesidad de base de datos externa.
 
 ## Ejecutar localmente
 
-Requisito: JDK 17 o superior.
+Requisito: jdk 17 en adelante.
 
 ```bash
 ./mvnw spring-boot:run
 ```
 
-La API queda disponible en `http://localhost:8080`. La información se guarda mientras la aplicación está encendida; al detenerla, las tareas se eliminan ya que se guarda en memoria.
+La API queda disponible en `http://localhost:8080`. La información se guarda mientras la aplicación está encendida, cuando se deja de correr las tareas se eliminan ya que se guarda en memoria mediante la herramienta de h2database.
 
 Para ejecutar las pruebas automatizadas:
 
@@ -69,3 +69,6 @@ Ejemplo de error de validación:
   "mensaje": "el titulo es obligatorio"
 }
 ```
+## Pepline 
+
+.github/workflows/ci.yml
