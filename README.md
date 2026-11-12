@@ -46,14 +46,19 @@ El flujo de GitHub Actions revisa que el proyecto compile correctamente cuando s
 | PUT | `/api/tasks/{id}` | Actualiza una tarea existente. |
 | DELETE | `/api/tasks/{id}` | Elimina una tarea. |
 
-### Crear una tarea
-
+### Crear una tarea desde consola
+macOS:
 ```bash
 curl -X POST http://localhost:8080/api/tasks \
   -H 'Content-Type: application/json' \
   -d '{"title":"Preparar documentación","description":"Documentar endpoints","isCompleted":false}'
 ```
-
+Windows:
+```bash
+curl.exe -X POST http://localhost:8080/api/tasks `
+  -H "Content-Type: application/json" `
+  -d '{\"title\":\"Preparar documentación\",\"description\":\"Documentar endpoints\",\"isCompleted\":false}'
+```
 El campo `title` es obligatorio y no puede estar vacío. Si `isCompleted` no se envía, se guarda como `false`.
 
 ## Respuestas de error
@@ -69,6 +74,6 @@ Ejemplo de error de validación:
   "mensaje": "el titulo es obligatorio"
 }
 ```
-## Pepline 
+## Pipeline 
 
 .github/workflows/ci.yml
